@@ -1,17 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
-import Card from '../UI/Card';
-import classes from './Cart.module.css';
-import CartItem from './CartItem';
+import Card from "../UI/Card";
+import classes from "./Cart.module.css";
+import CartItem from "./CartItem";
 
 const Cart = (props) => {
-  const cartItems = useSelector(state => state.cart.items);
-  return (
+  const cartItems = useSelector((state) => state.cart.items);
 
-    < Card className={classes.cart} >
+  return (
+    <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
-      <ul>{
-        cartItems.map(item =>
+      <ul>
+        {cartItems.map((item) => (
           <CartItem
             key={item.id}
             item={{
@@ -19,12 +19,12 @@ const Cart = (props) => {
               title: item.name,
               quantity: item.quantity,
               total: item.totalPrice,
-              price: item.price
+              price: item.price,
             }}
           />
-        )}
+        ))}
       </ul>
-    </Card >
+    </Card>
   );
 };
 
